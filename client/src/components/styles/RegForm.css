@@ -1,0 +1,60 @@
+.regForm {
+    padding-top: 40px;
+}
+
+label{
+    width: 50vw;
+
+}
+
+input{
+    width:90vw
+}
+
+.ans{
+    width: 100%;
+    display:flex;
+    flex-wrap: wrap;
+    margin: 20px 5px;
+}
+
+.formSec{
+    width: 50%;
+}
+
+#formImg{
+    width: 175px;
+}
+
+#formTitle{
+    margin: 0 25px;
+}
+
+#formTitle:hover{
+    cursor: pointer;
+}
+.ncpass{
+    border-color: red;
+}
+.ncpass:focus{
+    border-color: red;
+}
+
+
+.d-none{
+    display: none;
+}
+
+.form-1{
+    text-decoration-line: underline;
+}
+
+
+
+@media screen and (max-width: 800px)
+{
+    .formSec{
+        width: 95%;
+    }
+
+}
