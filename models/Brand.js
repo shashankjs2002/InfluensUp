@@ -48,5 +48,8 @@ const BrandSchema = new Schema({
 
 const Brand = mongoose.model('Brand', BrandSchema)
 Brand.createIndexes()
-
+// Brand.on('ready', function(){
+//     Brand.every('60 minutes', 'reduce prices');
+//     Brand.start();
+//   })
 module.exports = Brand

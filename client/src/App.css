@@ -7,6 +7,7 @@
 
 .accordian-value {
   overflow-wrap: anywhere;
+  font-weight: 700;
 }
 
 .accordion-button{

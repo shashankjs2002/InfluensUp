@@ -1,21 +1,33 @@
-import React, { useContext, useEffect,useLayoutEffect, useState } from 'react'
+import React, { useContext, useEffect,useLayoutEffect, useState , useRef} from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import UserContext from '../../context/UserContext'
 import userEdit from '../../assets/userEdit.svg'
+import plus from '../../assets/plus.svg'
+import Modal from './Modal'
+// import CampaignContext from '../../context/CampaignContext'
+import CampaignList from './CampaignList'
 
 const Brand = () => {
   const navigate = useNavigate(null)
   const location = useLocation(null)
  
   const usercontext = useContext(UserContext)
-  const {user, getBrand, newUser, setNewUser,updateBrand} = usercontext;
+  const {user, getBrand, newUser, setNewUser,updateBrand, fetchCampaigns, campaigns, setCampaigns} = usercontext;
+
+  // const campaignContext = useContext(CampaignContext)
+  // const {fetchCampaigns, campaigns, setCampaigns} = campaignContext;
   // const [newUser, setNewUser] = useState(user)
+
+  const ref = useRef(null)
   useEffect(() => {
     if(!localStorage.getItem('token')){
       return navigate('/login')
     }
     if(localStorage.getItem('type')==='brand'){
       getBrand();
+      
+      // user &&  fetchCampaigns();
+    
     }
     else{
       return navigate('/')
@@ -54,6 +66,9 @@ const toggle = () => {
     toggle()
   }
   
+  const displayModal = () => {
+    ref.current.click();
+  }
 
 
   return (
@@ -68,7 +83,6 @@ const toggle = () => {
               <span id='edit-btn' className='accordion-btn' onClick={toggle}>Edit
                 <img src={userEdit} alt="" width="25px"/>
                 </span>
-
                  <span id='save-btn' className='accordion-btn' onClick={save} style={{display:'none'}}> Save Changes </span>
                  <span id='close-btn' className='accordion-btn' onClick={onClose} style={{display:'none'}}> Close </span>
               </span>
@@ -213,17 +227,40 @@ const toggle = () => {
                 </div>
               </div>
               
-              <div style={{paddingTop:"50px"}}>
+            </div>    
+            <div style={{paddingTop:"50px"}}>
 
-              <h4>No Campaign yet</h4>
-              <h6>Start New Campaign</h6>
+              {!campaigns &&<h4>No Campaign yet</h4>}
+              {campaigns &&<h4>Your Campaign</h4>}
+              <div style={{display: 'flex', justifyContent: 'space-between'}}>
+
+                <h6>Start New Campaign</h6>
+               
+
+                <span id='edit-btn' className='accordion-btn' onClick={displayModal}>
+                  <img style={{marginRight:'5px'}} src={plus} alt="" width="15px"/>
+                  New Campaign
+                </span>
+
+                  <button type="button" ref={ref} className="btn btn-primary d-none" data-bs-toggle="modal" data-bs-target="#exampleModal1">
+                        New Campaign Modal
+                  </button>
+                  <Modal/>
+                
               </div>
-              
+
+              {/* Card */}
+              {campaigns && <div className="my-3 row">
+              {campaigns.map((campaign) => {
+                return <CampaignList key={campaign._id} campaign={campaign}/>
+              })}
+            
+            </div>}
             </div>
-
-           
-
+            
           </div>
+
+
         }
     </>
   )

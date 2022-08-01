@@ -4,7 +4,7 @@ import FormContext from "./FormContext";
 const FormState = (props) => {
     const [formName, setFormName] = useState('influencer-form')
     const [error, setError] = useState(null)
-    const host = "https://influensup.herokuapp.com"
+    const host = "http://localhost:5000"
 
     const changeForm = (formName) => {
         let influencerForm = document.getElementsByClassName('form-1')[0]

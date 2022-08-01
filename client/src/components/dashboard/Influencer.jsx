@@ -147,7 +147,7 @@ const toggle = () => {
                     <strong>
                       <div className='ans'>
                           <label htmlFor="category" className='d-none ' ></label>
-                          <select style={{}} name="category" onChange={onchange} value={newUser.category} onfocus='this.size=5;' onblur='this.size=1;'>
+                          <select style={{}} name="category" onChange={onchange} value={newUser.category}>
                                         <option value="None">Select</option>
                                         <option value="Beauty">Beauty and Fashion</option>
                                         <option value="Health and Fitness">Health and Fitness</option>
@@ -246,8 +246,9 @@ const toggle = () => {
               
               <div style={{paddingTop:"50px"}}>
 
-              <h4>No Active Campaign yet</h4>
-              <h6>Active Campaigns are displayed here</h6>
+              <h4>Campaigns</h4>
+              <h6>No Active Campaigns</h6>
+              <h6>Campaigns of your category are displayed here.</h6>
               </div>
               
             </div>

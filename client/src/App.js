@@ -15,6 +15,7 @@ import Influencer from './components/dashboard/Influencer';
 import Brand from './components/dashboard/Brand';
 import UserState from './context/UserState';
 import Verified from './components/Verified';
+import CampaignState from './context/CampaignState';
 
 
 function App() {
@@ -22,7 +23,7 @@ function App() {
     <>
     <Router>
     <UserState> 
-    <FormState> 
+    <FormState>
 
       <div className="App">
           <Navbar/>

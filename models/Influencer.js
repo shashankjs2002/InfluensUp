@@ -43,7 +43,9 @@ const InfluencerSchema = new Schema({
     verified: {
         type: Boolean,
         default: false,
-    }
+    },
+    campaigns:[{type: Schema.Types.ObjectId,
+        ref: "Campaign"}]
     
 }, {timestamps: true})
 

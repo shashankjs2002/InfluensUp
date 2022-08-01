@@ -319,7 +319,7 @@ router.post('/get-influencer', fetchUser, async (req, res) => {
         const userId = req.user.id;
         const user = await Influencer.findById(userId).select("-password -pass")
     
-        res.send(user)
+        res.json(user)
     } catch (error) {
         console.log(error.message)
         res.status(500).send("Internal server error")    
